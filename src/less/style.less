@@ -1,0 +1,41 @@
+.mainContainer {
+    height: 100vh;
+    .content {
+        display: inline-block;
+        width: 50%;
+        vertical-align: top;
+    }
+
+    .inputContent {
+    }
+
+    .previewContent {
+
+        padding: 5px;
+        box-sizing: border-box;
+        background: gray;
+        zoom: 80%;
+        height: 100%;
+        overflow: scroll;
+
+        .page {
+            overflow: hidden;
+            background: white;
+            width: 172mm;
+            height: 251mm;
+
+            margin: 3px auto;
+
+            // ページ余白
+            padding: 10mm;
+
+            page-break-after: always;
+            &:last-child {
+                page-break-after: auto;
+            }
+        }
+
+    }
+
+
+}
