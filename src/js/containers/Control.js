@@ -3,6 +3,7 @@ import React from 'react'
 import {observer, inject} from "mobx-react";
 
 import Button from '@material-ui/core/Button';
+import Icon from '@material-ui/core/Icon';
 
 @inject("event") @observer
 class MdInput extends React.Component {
@@ -19,10 +20,20 @@ class MdInput extends React.Component {
                 variant="contained"
                 color="primary"
                 size="small"
+                onClick={this.props.event.openFile}
+            ><Icon>folder_open</Icon></Button>
+            <Button
+                variant="contained"
+                color="primary"
+                size="small"
+                onClick={this.props.event.saveFile}
+            ><Icon>save</Icon></Button>
+            <Button
+                variant="contained"
+                color="primary"
+                size="small"
                 onClick={this.props.event.createPdf}
-            >
-                PDF作成
-            </Button>
+            ><Icon>picture_as_pdf</Icon></Button>
         </div>
     }
 

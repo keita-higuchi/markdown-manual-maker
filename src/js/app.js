@@ -37,4 +37,3 @@ const event = new Event(store)
 ReactDOM.render(<Provider event={event}><App store={store} /></Provider>,
         document.getElementById("app"))
 
-

@@ -15,7 +15,8 @@ const os = require('os');
 let mainWindow
 
 function createWindow () {
-  mainWindow = new BrowserWindow({width: 800, height: 600})
+  //mainWindow = new BrowserWindow({width: 800, height: 600})
+  mainWindow = new BrowserWindow({width: 1200, height: 800})
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
@@ -111,6 +112,18 @@ ipcMain.on('printPdf', (event, arg) => {
 
     event.returnValue = 'pog';
 
+});
+
+
+ipcMain.on('openFile', (event, arg) => {
+
+    dialog.showOpenDialog({
+        defaultPath: path.join(os.homedir(), 'Desktop'),
+        filters: [{name: 'Markdown', extensions:['md']}]
+    }, (val) => {
+        console.log(val);
+        event.returnValue = val;
+    });
 });
 
 

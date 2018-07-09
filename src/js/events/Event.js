@@ -9,26 +9,9 @@ class Event {
     }
 
     @action.bound
-    handleChangeViewMode(viewMode) {
-        this.store.setViewMode(viewMode)
-    }
-
-    @action.bound
     handleChangeMdText(e) {
-        //this.store.mdText = e.target.value
-        //this.store.compile()
         this.store.mdText = e;
         this.store.compile();
-    }
-
-    @action.bound
-    handleChangeUser(e) {
-        this.store.user = e.target.value
-    }
-
-    @action.bound
-    handleChangePass(e) {
-        this.store.pass = e.target.value
     }
 
     /**
@@ -39,6 +22,19 @@ class Event {
 
         // tmp.html作成
         let result = ipcRenderer.sendSync('printPdf', this.store.html);
+    }
+
+    /**
+     * mdファイルオープン.
+     */
+    @action.bound
+    openFile() {
+        let result = ipcRenderer.sendSync('openFile');
+
+        if (result !== undefined) {
+            this.store.mdText = fs.readFileSync(result[0], 'utf8');
+            this.store.compile();
+        }
     }
 
 

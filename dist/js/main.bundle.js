@@ -3290,6 +3290,156 @@ var _Grow = _interopRequireDefault(__webpack_require__(/*! ./Grow */ "./node_mod
 
 /***/ }),
 
+/***/ "./node_modules/@material-ui/core/Icon/Icon.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/@material-ui/core/Icon/Icon.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/builtin/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/builtin/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.styles = void 0;
+
+var _extends2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/builtin/extends */ "./node_modules/@babel/runtime/helpers/builtin/extends.js"));
+
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/builtin/defineProperty */ "./node_modules/@babel/runtime/helpers/builtin/defineProperty.js"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/builtin/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/builtin/objectWithoutProperties.js"));
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+
+var _classnames = _interopRequireDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
+
+var _withStyles = _interopRequireDefault(__webpack_require__(/*! ../styles/withStyles */ "./node_modules/@material-ui/core/styles/withStyles.js"));
+
+var _helpers = __webpack_require__(/*! ../utils/helpers */ "./node_modules/@material-ui/core/utils/helpers.js");
+
+var styles = function styles(theme) {
+  return {
+    root: {
+      userSelect: 'none',
+      fontSize: 24,
+      width: '1em',
+      height: '1em',
+      // Chrome fix for https://bugs.chromium.org/p/chromium/issues/detail?id=820541
+      // To remove at some point.
+      overflow: 'hidden',
+      flexShrink: 0
+    },
+    colorPrimary: {
+      color: theme.palette.primary.main
+    },
+    colorSecondary: {
+      color: theme.palette.secondary.main
+    },
+    colorAction: {
+      color: theme.palette.action.active
+    },
+    colorError: {
+      color: theme.palette.error.main
+    },
+    colorDisabled: {
+      color: theme.palette.action.disabled
+    },
+    fontSizeInherit: {
+      fontSize: 'inherit'
+    }
+  };
+};
+
+exports.styles = styles;
+
+function Icon(props) {
+  var _classNames;
+
+  var children = props.children,
+      classes = props.classes,
+      className = props.className,
+      color = props.color,
+      fontSize = props.fontSize,
+      other = (0, _objectWithoutProperties2.default)(props, ["children", "classes", "className", "color", "fontSize"]);
+  return _react.default.createElement("span", (0, _extends2.default)({
+    className: (0, _classnames.default)('material-icons', classes.root, (_classNames = {}, (0, _defineProperty2.default)(_classNames, classes["color".concat((0, _helpers.capitalize)(color))], color !== 'inherit'), (0, _defineProperty2.default)(_classNames, classes["fontSize".concat((0, _helpers.capitalize)(fontSize))], fontSize !== 'default'), _classNames), className),
+    "aria-hidden": "true"
+  }, other), children);
+}
+
+Icon.propTypes =  true ? {
+  /**
+   * The name of the icon font ligature.
+   */
+  children: _propTypes.default.node,
+
+  /**
+   * Override or extend the styles applied to the component.
+   * See [CSS API](#css-api) below for more details.
+   */
+  classes: _propTypes.default.object.isRequired,
+
+  /**
+   * @ignore
+   */
+  className: _propTypes.default.string,
+
+  /**
+   * The color of the component. It supports those theme colors that make sense for this component.
+   */
+  color: _propTypes.default.oneOf(['inherit', 'primary', 'secondary', 'action', 'error', 'disabled']),
+
+  /**
+   * The fontSize applied to the icon. Defaults to 24px, but can be configure to inherit font size.
+   */
+  fontSize: _propTypes.default.oneOf(['inherit', 'default'])
+} : undefined;
+Icon.defaultProps = {
+  color: 'inherit',
+  fontSize: 'default'
+};
+Icon.muiName = 'Icon';
+
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiIcon'
+})(Icon);
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/Icon/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/@material-ui/core/Icon/index.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/builtin/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/builtin/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function get() {
+    return _Icon.default;
+  }
+});
+
+var _Icon = _interopRequireDefault(__webpack_require__(/*! ./Icon */ "./node_modules/@material-ui/core/Icon/Icon.js"));
+
+/***/ }),
+
 /***/ "./node_modules/@material-ui/core/Input/Input.js":
 /*!*******************************************************!*\
   !*** ./node_modules/@material-ui/core/Input/Input.js ***!
@@ -77727,6 +77877,10 @@ var _Button = __webpack_require__(/*! @material-ui/core/Button */ "./node_module
 
 var _Button2 = _interopRequireDefault(_Button);
 
+var _Icon = __webpack_require__(/*! @material-ui/core/Icon */ "./node_modules/@material-ui/core/Icon/index.js");
+
+var _Icon2 = _interopRequireDefault(_Icon);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -77758,9 +77912,41 @@ var MdInput = (_dec = (0, _mobxReact.inject)("event"), _dec(_class = (0, _mobxRe
                         variant: 'contained',
                         color: 'primary',
                         size: 'small',
+                        onClick: this.props.event.openFile
+                    },
+                    _react2.default.createElement(
+                        _Icon2.default,
+                        null,
+                        'folder_open'
+                    )
+                ),
+                _react2.default.createElement(
+                    _Button2.default,
+                    {
+                        variant: 'contained',
+                        color: 'primary',
+                        size: 'small',
+                        onClick: this.props.event.saveFile
+                    },
+                    _react2.default.createElement(
+                        _Icon2.default,
+                        null,
+                        'save'
+                    )
+                ),
+                _react2.default.createElement(
+                    _Button2.default,
+                    {
+                        variant: 'contained',
+                        color: 'primary',
+                        size: 'small',
                         onClick: this.props.event.createPdf
                     },
-                    'PDF\u4F5C\u6210'
+                    _react2.default.createElement(
+                        _Icon2.default,
+                        null,
+                        'picture_as_pdf'
+                    )
                 )
             );
         }
@@ -77794,10 +77980,6 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _classnames = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-
-var _classnames2 = _interopRequireDefault(_classnames);
-
 var _mobxReact = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/index.module.js");
 
 var _TextField = __webpack_require__(/*! @material-ui/core/TextField */ "./node_modules/@material-ui/core/TextField/index.js");
@@ -77807,6 +77989,18 @@ var _TextField2 = _interopRequireDefault(_TextField);
 var _reactAce = __webpack_require__(/*! react-ace */ "./node_modules/react-ace/lib/index.js");
 
 var _reactAce2 = _interopRequireDefault(_reactAce);
+
+var _Button = __webpack_require__(/*! @material-ui/core/Button */ "./node_modules/@material-ui/core/Button/index.js");
+
+var _Button2 = _interopRequireDefault(_Button);
+
+var _Icon = __webpack_require__(/*! @material-ui/core/Icon */ "./node_modules/@material-ui/core/Icon/index.js");
+
+var _Icon2 = _interopRequireDefault(_Icon);
+
+var _fs = __webpack_require__(/*! fs */ "fs");
+
+var _fs2 = _interopRequireDefault(_fs);
 
 __webpack_require__(/*! brace/mode/markdown */ "./node_modules/brace/mode/markdown.js");
 
@@ -77826,11 +78020,79 @@ var MdInput = (_dec = (0, _mobxReact.inject)("event"), _dec(_class = (0, _mobxRe
     function MdInput(props) {
         _classCallCheck(this, MdInput);
 
-        return _possibleConstructorReturn(this, (MdInput.__proto__ || Object.getPrototypeOf(MdInput)).call(this, props));
         //this.codeSort = this.codeSort.bind(this)
+        var _this = _possibleConstructorReturn(this, (MdInput.__proto__ || Object.getPrototypeOf(MdInput)).call(this, props));
+
+        _this.addText = _this.addText.bind(_this);
+
+        document.ondragover = function () {
+            return false;
+        };
+        document.ondragleave = document.ondragend = function () {
+            return false;
+        };
+        document.ondrop = function (e) {
+            e.preventDefault();
+            var file = e.dataTransfer.files[0];
+            var editor = _this.refs.aceEditor.editor;
+
+            if (/^image/.test(file.type)) {
+                editor.insert('![](' + file.path.replace(/ /g, '%20') + ')');
+            } else if (/^text/.test(file.type) || file.type == '') {
+
+                // ファイル読み込み
+                // TODO 確認してから
+                var str = _fs2.default.readFileSync(file.path, 'utf8');
+                _this.props.store.mdText = str;
+            }
+
+            return false;
+        };
+
+        return _this;
     }
 
     _createClass(MdInput, [{
+        key: 'addText',
+        value: function addText(type) {
+            //this.props.event.addText(position, type);
+
+            var editor = this.refs.aceEditor.editor;
+            var selection = this.refs.aceEditor.editor.selection;
+
+            switch (type) {
+                case 'bold':
+                    editor.insert(' **bold** ');
+                    selection.moveCursorLongWordLeft();
+                    selection.selectAWord();
+                    break;
+                case 'itaric':
+                    editor.insert(' *itaric* ');
+                    selection.moveCursorLongWordLeft();
+                    selection.selectAWord();
+                    break;
+                case 'link':
+                    editor.insert(' [link](http://) ');
+                    selection.moveCursorLeft();
+                    selection.moveCursorLeft();
+                    selection.selectAWord();
+                    break;
+                case 'image':
+                    editor.insert(' ![](/) ');
+                    selection.moveCursorLeft();
+                    selection.moveCursorLeft();
+                    break;
+
+                case 'table':
+                    var tableText = '|head|head|head|\n|:-:|:-:|:-:|\n|data|data|data|\n|data|data|data|\n|data|data|data|';
+
+                    editor.insert(tableText);
+                    break;
+            }
+
+            editor.focus();
+        }
+    }, {
         key: 'render',
         value: function render() {
             var _this2 = this;
@@ -77838,13 +78100,95 @@ var MdInput = (_dec = (0, _mobxReact.inject)("event"), _dec(_class = (0, _mobxRe
             return _react2.default.createElement(
                 'div',
                 { className: 'content inputContent' },
+                _react2.default.createElement(
+                    'div',
+                    { className: 'editButtons' },
+                    _react2.default.createElement(
+                        _Button2.default,
+                        {
+                            variant: 'contained',
+                            size: 'small',
+                            onClick: function onClick(e) {
+                                _this2.addText('bold');
+                            }
+                        },
+                        _react2.default.createElement(
+                            _Icon2.default,
+                            null,
+                            'format_bold'
+                        )
+                    ),
+                    _react2.default.createElement(
+                        _Button2.default,
+                        {
+                            variant: 'contained',
+                            size: 'small',
+                            onClick: function onClick(e) {
+                                _this2.addText('itaric');
+                            }
+                        },
+                        _react2.default.createElement(
+                            _Icon2.default,
+                            null,
+                            'format_italic'
+                        )
+                    ),
+                    _react2.default.createElement(
+                        _Button2.default,
+                        {
+                            variant: 'contained',
+                            size: 'small',
+                            onClick: function onClick(e) {
+                                _this2.addText('link');
+                            }
+                        },
+                        _react2.default.createElement(
+                            _Icon2.default,
+                            null,
+                            'insert_link'
+                        )
+                    ),
+                    _react2.default.createElement(
+                        _Button2.default,
+                        {
+                            variant: 'contained',
+                            size: 'small',
+                            onClick: function onClick(e) {
+                                _this2.addText('image');
+                            }
+                        },
+                        _react2.default.createElement(
+                            _Icon2.default,
+                            null,
+                            'image'
+                        )
+                    ),
+                    _react2.default.createElement(
+                        _Button2.default,
+                        {
+                            variant: 'contained',
+                            size: 'small',
+                            onClick: function onClick(e) {
+                                _this2.addText('table');
+                            }
+                        },
+                        _react2.default.createElement(
+                            _Icon2.default,
+                            null,
+                            'grid_on'
+                        )
+                    )
+                ),
                 _react2.default.createElement(_reactAce2.default, {
                     mode: 'markdown',
                     theme: 'github',
-                    fontsize: 14,
+                    height: '600px',
+                    width: '100%',
+                    fontSize: 16,
                     highlightActiveLine: true,
-                    showGutter: false,
+                    showGutter: true,
                     value: this.props.store.mdText,
+                    ref: 'aceEditor',
                     onChange: function onChange(e) {
                         _this2.props.event.handleChangeMdText(e);
                     }
@@ -77939,7 +78283,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _dec, _dec2, _dec3, _dec4, _dec5, _desc, _value, _class;
+var _dec, _dec2, _dec3, _desc, _value, _class;
 
 var _mobx = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
 
@@ -77982,7 +78326,7 @@ function _applyDecoratedDescriptor(target, property, decorators, descriptor, con
     return desc;
 }
 
-var Event = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 = _mobx.action.bound, _dec4 = _mobx.action.bound, _dec5 = _mobx.action.bound, (_class = function () {
+var Event = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 = _mobx.action.bound, (_class = function () {
     function Event(store) {
         _classCallCheck(this, Event);
 
@@ -77990,27 +78334,10 @@ var Event = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 = _mob
     }
 
     _createClass(Event, [{
-        key: "handleChangeViewMode",
-        value: function handleChangeViewMode(viewMode) {
-            this.store.setViewMode(viewMode);
-        }
-    }, {
         key: "handleChangeMdText",
         value: function handleChangeMdText(e) {
-            //this.store.mdText = e.target.value
-            //this.store.compile()
             this.store.mdText = e;
             this.store.compile();
-        }
-    }, {
-        key: "handleChangeUser",
-        value: function handleChangeUser(e) {
-            this.store.user = e.target.value;
-        }
-    }, {
-        key: "handleChangePass",
-        value: function handleChangePass(e) {
-            this.store.pass = e.target.value;
         }
 
         /**
@@ -78024,10 +78351,25 @@ var Event = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 = _mob
             // tmp.html作成
             var result = _electron.ipcRenderer.sendSync('printPdf', this.store.html);
         }
+
+        /**
+         * mdファイルオープン.
+         */
+
+    }, {
+        key: "openFile",
+        value: function openFile() {
+            var result = _electron.ipcRenderer.sendSync('openFile');
+
+            if (result !== undefined) {
+                this.store.mdText = _fs2.default.readFileSync(result[0], 'utf8');
+                this.store.compile();
+            }
+        }
     }]);
 
     return Event;
-}(), (_applyDecoratedDescriptor(_class.prototype, "handleChangeViewMode", [_dec], Object.getOwnPropertyDescriptor(_class.prototype, "handleChangeViewMode"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "handleChangeMdText", [_dec2], Object.getOwnPropertyDescriptor(_class.prototype, "handleChangeMdText"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "handleChangeUser", [_dec3], Object.getOwnPropertyDescriptor(_class.prototype, "handleChangeUser"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "handleChangePass", [_dec4], Object.getOwnPropertyDescriptor(_class.prototype, "handleChangePass"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "createPdf", [_dec5], Object.getOwnPropertyDescriptor(_class.prototype, "createPdf"), _class.prototype)), _class));
+}(), (_applyDecoratedDescriptor(_class.prototype, "handleChangeMdText", [_dec], Object.getOwnPropertyDescriptor(_class.prototype, "handleChangeMdText"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "createPdf", [_dec2], Object.getOwnPropertyDescriptor(_class.prototype, "createPdf"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "openFile", [_dec3], Object.getOwnPropertyDescriptor(_class.prototype, "openFile"), _class.prototype)), _class));
 exports.default = Event;
 
 /***/ }),
@@ -78117,7 +78459,7 @@ var Store = (_dec = _mobx.action.bound, (_class = function () {
         value: function compile() {
 
             //  --- を置き換えてからmd
-            this.html = '<div class="page">' + (0, _marked2.default)(this.mdText.replace(/- - -/g, '</div><div class="page">')) + '</div>';
+            this.html = '<div class="page">' + (0, _marked2.default)(this.mdText.replace(/---/g, '</div><div class="page">')) + '</div>';
         }
     }]);
 

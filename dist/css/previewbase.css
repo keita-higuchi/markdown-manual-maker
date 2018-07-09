@@ -1,3 +1,6 @@
-.previewContent {
+.page {
   page-break-after: always;
+}
+.page .text-right {
+  text-align: right;
 }

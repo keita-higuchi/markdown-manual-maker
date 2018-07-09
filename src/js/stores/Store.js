@@ -10,7 +10,7 @@ class Store {
     compile() {
 
         //  --- を置き換えてからmd
-        this.html = '<div class="page">' + marked(this.mdText.replace(/- - -/g, '</div><div class="page">')) + '</div>';
+        this.html = '<div class="page">' + marked(this.mdText.replace(/---/g, '</div><div class="page">')) + '</div>';
     }
 }
 
