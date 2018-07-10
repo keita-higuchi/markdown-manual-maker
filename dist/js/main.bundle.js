@@ -78062,23 +78062,23 @@ var MdInput = (_dec = (0, _mobxReact.inject)("event"), _dec(_class = (0, _mobxRe
 
             switch (type) {
                 case 'bold':
-                    editor.insert(' **bold** ');
+                    editor.insert('**bold**');
                     selection.moveCursorLongWordLeft();
                     selection.selectAWord();
                     break;
                 case 'itaric':
-                    editor.insert(' *itaric* ');
+                    editor.insert('*itaric*');
                     selection.moveCursorLongWordLeft();
                     selection.selectAWord();
                     break;
                 case 'link':
-                    editor.insert(' [link](http://) ');
+                    editor.insert('[link](http://)');
                     selection.moveCursorLeft();
                     selection.moveCursorLeft();
                     selection.selectAWord();
                     break;
                 case 'image':
-                    editor.insert(' ![](/) ');
+                    editor.insert('![](/)');
                     selection.moveCursorLeft();
                     selection.moveCursorLeft();
                     break;
@@ -78283,7 +78283,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _dec, _dec2, _dec3, _desc, _value, _class;
+var _dec, _dec2, _dec3, _dec4, _desc, _value, _class;
 
 var _mobx = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
 
@@ -78326,7 +78326,7 @@ function _applyDecoratedDescriptor(target, property, decorators, descriptor, con
     return desc;
 }
 
-var Event = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 = _mobx.action.bound, (_class = function () {
+var Event = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 = _mobx.action.bound, _dec4 = _mobx.action.bound, (_class = function () {
     function Event(store) {
         _classCallCheck(this, Event);
 
@@ -78360,16 +78360,28 @@ var Event = (_dec = _mobx.action.bound, _dec2 = _mobx.action.bound, _dec3 = _mob
         key: "openFile",
         value: function openFile() {
             var result = _electron.ipcRenderer.sendSync('openFile');
-
-            if (result !== undefined) {
+            if (result !== '') {
                 this.store.mdText = _fs2.default.readFileSync(result[0], 'utf8');
                 this.store.compile();
+            }
+        }
+
+        /**
+         * mdファイル保存.
+         */
+
+    }, {
+        key: "saveFile",
+        value: function saveFile() {
+            var result = _electron.ipcRenderer.sendSync('saveFile');
+            if (result !== '') {
+                _fs2.default.writeFileSync(result, this.store.mdText);
             }
         }
     }]);
 
     return Event;
-}(), (_applyDecoratedDescriptor(_class.prototype, "handleChangeMdText", [_dec], Object.getOwnPropertyDescriptor(_class.prototype, "handleChangeMdText"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "createPdf", [_dec2], Object.getOwnPropertyDescriptor(_class.prototype, "createPdf"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "openFile", [_dec3], Object.getOwnPropertyDescriptor(_class.prototype, "openFile"), _class.prototype)), _class));
+}(), (_applyDecoratedDescriptor(_class.prototype, "handleChangeMdText", [_dec], Object.getOwnPropertyDescriptor(_class.prototype, "handleChangeMdText"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "createPdf", [_dec2], Object.getOwnPropertyDescriptor(_class.prototype, "createPdf"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "openFile", [_dec3], Object.getOwnPropertyDescriptor(_class.prototype, "openFile"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "saveFile", [_dec4], Object.getOwnPropertyDescriptor(_class.prototype, "saveFile"), _class.prototype)), _class));
 exports.default = Event;
 
 /***/ }),
@@ -78390,7 +78402,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _dec, _desc, _value, _class, _descriptor, _descriptor2;
+var _dec, _desc, _value, _class, _descriptor, _descriptor2, _descriptor3;
 
 var _mobx = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
 
@@ -78452,6 +78464,8 @@ var Store = (_dec = _mobx.action.bound, (_class = function () {
         _initDefineProp(this, "mdText", _descriptor, this);
 
         _initDefineProp(this, "html", _descriptor2, this);
+
+        _initDefineProp(this, "currentPage", _descriptor3, this);
     }
 
     _createClass(Store, [{
@@ -78473,6 +78487,11 @@ var Store = (_dec = _mobx.action.bound, (_class = function () {
     enumerable: true,
     initializer: function initializer() {
         return "";
+    }
+}), _descriptor3 = _applyDecoratedDescriptor(_class.prototype, "currentPage", [_mobx.observable], {
+    enumerable: true,
+    initializer: function initializer() {
+        return 1;
     }
 }), _applyDecoratedDescriptor(_class.prototype, "compile", [_dec], Object.getOwnPropertyDescriptor(_class.prototype, "compile"), _class.prototype)), _class));
 exports.default = Store;

@@ -5,6 +5,7 @@ class Store {
 
     @observable mdText = ""
     @observable html = ""
+    @observable currentPage = 1
 
     @action.bound
     compile() {

@@ -59,23 +59,23 @@ class MdInput extends React.Component {
 
         switch (type) {
         case 'bold':
-            editor.insert(' **bold** ');
+            editor.insert('**bold**');
             selection.moveCursorLongWordLeft();
             selection.selectAWord();
             break;
         case 'itaric':
-            editor.insert(' *itaric* ');
+            editor.insert('*itaric*');
             selection.moveCursorLongWordLeft();
             selection.selectAWord();
             break;
         case 'link':
-            editor.insert(' [link](http://) ');
+            editor.insert('[link](http://)');
             selection.moveCursorLeft();
             selection.moveCursorLeft();
             selection.selectAWord();
             break;
         case 'image':
-            editor.insert(' ![](/) ');
+            editor.insert('![](/)');
             selection.moveCursorLeft();
             selection.moveCursorLeft();
             break;

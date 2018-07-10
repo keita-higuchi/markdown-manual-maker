@@ -26,7 +26,7 @@ function createWindow () {
   }))
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools()
+  //mainWindow.webContents.openDevTools()
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
@@ -121,7 +121,24 @@ ipcMain.on('openFile', (event, arg) => {
         defaultPath: path.join(os.homedir(), 'Desktop'),
         filters: [{name: 'Markdown', extensions:['md']}]
     }, (val) => {
-        console.log(val);
+
+        if (val === undefined) {
+            val = '';
+        }
+        event.returnValue = val;
+    });
+});
+
+
+ipcMain.on('saveFile', (event, arg) => {
+
+    dialog.showSaveDialog({
+        defaultPath: path.join(os.homedir(), 'Desktop'),
+        filters: [{name: 'Markdown', extensions:['md']}]
+    }, (val) => {
+        if (val === undefined) {
+            val = '';
+        }
         event.returnValue = val;
     });
 });

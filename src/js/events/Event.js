@@ -30,13 +30,23 @@ class Event {
     @action.bound
     openFile() {
         let result = ipcRenderer.sendSync('openFile');
-
-        if (result !== undefined) {
+        if (result !== '') {
             this.store.mdText = fs.readFileSync(result[0], 'utf8');
             this.store.compile();
         }
+
     }
 
+    /**
+     * mdファイル保存.
+     */
+    @action.bound
+    saveFile() {
+        let result = ipcRenderer.sendSync('saveFile');
+        if (result !== '') {
+            fs.writeFileSync(result, this.store.mdText);
+        }
+    }
 
 }
 

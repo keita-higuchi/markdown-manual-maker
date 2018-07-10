@@ -42,7 +42,3 @@ class MdInput extends React.Component {
 export default MdInput;
 
 
-
-
-
-

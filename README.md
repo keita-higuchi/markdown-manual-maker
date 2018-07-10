@@ -1,13 +1,10 @@
 # markdown-manual-maker
 
-Markdownでドキュメントを作成するツールです。
-
-準備中。。。
+A tool to create PDF documents with Markdown.
 
 ## Usage
 
 ### 改ページする
-
 
 `---`で改ページします。
 
@@ -17,10 +14,14 @@ Markdownでドキュメントを作成するツールです。
 
 ### ページレイアウトを変更する
 
+準備中。。。
+
 
 ## For Developer
 
 ### テンプレートの作成
+
+準備中。。。
 
 
 ## Licenses
