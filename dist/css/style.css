@@ -1,0 +1,38 @@
+html,
+body,
+main {
+  height: 100vh;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+.mainContainer .content {
+  display: inline-block;
+  width: 50%;
+  vertical-align: top;
+}
+.mainContainer .previewContent {
+  padding: 5px;
+  box-sizing: border-box;
+  background: gray;
+  zoom: 60%;
+  height: 1170px;
+  overflow: scroll;
+}
+.mainContainer .previewContent .page {
+  overflow: hidden;
+  background: white;
+  width: 210mm;
+  height: 297mm;
+  margin: 3px auto;
+  padding: 20mm;
+  page-break-after: always;
+}
+.mainContainer .previewContent .page:last-child {
+  page-break-after: auto;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+}

@@ -1,0 +1,9 @@
+.page {
+  page-break-after: always;
+}
+.page:last-child {
+  page-break-after: auto;
+}
+.page .text-right {
+  text-align: right;
+}

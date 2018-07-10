@@ -1,0 +1,62 @@
+html, body, main {
+    height: 100vh;
+}
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.mainContainer {
+
+    .content {
+        display: inline-block;
+        width: 50%;
+        vertical-align: top;
+    }
+
+    .inputContent {
+    }
+
+    .previewContent {
+
+        padding: 5px;
+        box-sizing: border-box;
+        background: gray;
+        zoom: 60%;
+        //height: 100%;
+        height: 1170px;
+        overflow: scroll;
+
+        .page {
+            overflow: hidden;
+            background: white;
+            //width: 172mm;
+            //height: 251mm;
+
+            width: 210mm;
+            height: 297mm;
+
+            margin: 3px auto;
+
+            // ページ余白
+            padding: 20mm;
+
+            page-break-after: always;
+            &:last-child {
+                page-break-after: auto;
+            }
+        }
+
+    }
+
+}
+
+.editButtons {
+
+}
+
+
+footer {
+    position: absolute;
+    bottom: 0;
+}
