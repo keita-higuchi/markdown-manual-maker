@@ -2,10 +2,8 @@ import React from 'react'
 
 import {observer, inject} from "mobx-react";
 
-import TextField from '@material-ui/core/TextField';
+import {TextField, Button, Icon, Tooltip} from '@material-ui/core';
 import AceEditor from 'react-ace';
-import Button from '@material-ui/core/Button';
-import Icon from '@material-ui/core/Icon';
 
 import fs from 'fs';
 
@@ -51,6 +49,10 @@ class MdInput extends React.Component {
 
     }
 
+    componentDidMount() {
+        this.props.event.handleChangeMdText('');
+    }
+
     addText(type) {
         //this.props.event.addText(position, type);
 
@@ -77,11 +79,10 @@ class MdInput extends React.Component {
         case 'image':
             editor.insert('![](/)');
             selection.moveCursorLeft();
-            selection.moveCursorLeft();
             break;
 
         case 'table':
-            let tableText = '|head|head|head|\n|:-:|:-:|:-:|\n|data|data|data|\n|data|data|data|\n|data|data|data|';
+            let tableText = '|head|head|head|\n|:-:|:-:|:-:|\n|data|data|data|\n|data|data|data|\n|data|data|data|\r';
 
             editor.insert(tableText);
             break;
@@ -96,31 +97,41 @@ class MdInput extends React.Component {
 
         return <div className="content inputContent">
             <div className="editButtons">
-                <Button
-                    variant="contained"
-                    size="small"
-                    onClick={(e) => {this.addText('bold')}}
-                ><Icon>format_bold</Icon></Button>
-                <Button
-                    variant="contained"
-                    size="small"
-                    onClick={(e) => {this.addText('itaric')}}
-                ><Icon>format_italic</Icon></Button>
-                <Button
-                    variant="contained"
-                    size="small"
-                    onClick={(e) => {this.addText('link')}}
-                ><Icon>insert_link</Icon></Button>
-                <Button
-                    variant="contained"
-                    size="small"
-                    onClick={(e) => {this.addText('image')}}
-                ><Icon>image</Icon></Button>
-                <Button
-                    variant="contained"
-                    size="small"
-                    onClick={(e) => {this.addText('table')}}
-                ><Icon>grid_on</Icon></Button>
+                <Tooltip title="bold">
+                    <Button
+                        variant="contained"
+                        size="small"
+                        onClick={(e) => {this.addText('bold')}}
+                    ><Icon>format_bold</Icon></Button>
+                </Tooltip>
+                <Tooltip title="itaric">
+                    <Button
+                        variant="contained"
+                        size="small"
+                        onClick={(e) => {this.addText('itaric')}}
+                    ><Icon>format_italic</Icon></Button>
+                </Tooltip>
+                <Tooltip title="link">
+                    <Button
+                        variant="contained"
+                        size="small"
+                        onClick={(e) => {this.addText('link')}}
+                    ><Icon>insert_link</Icon></Button>
+                </Tooltip>
+                <Tooltip title="image">
+                    <Button
+                        variant="contained"
+                        size="small"
+                        onClick={(e) => {this.addText('image')}}
+                    ><Icon>image</Icon></Button>
+                </Tooltip>
+                <Tooltip title="table">
+                    <Button
+                        variant="contained"
+                        size="small"
+                        onClick={(e) => {this.addText('table')}}
+                    ><Icon>grid_on</Icon></Button>
+                </Tooltip>
             </div>
             <AceEditor
                 mode="markdown"

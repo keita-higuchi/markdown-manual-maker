@@ -2,8 +2,7 @@ import React from 'react'
 
 import {observer, inject} from "mobx-react";
 
-import Button from '@material-ui/core/Button';
-import Icon from '@material-ui/core/Icon';
+import {Button, Icon, Tooltip} from '@material-ui/core';
 
 @inject("event") @observer
 class MdInput extends React.Component {
@@ -13,27 +12,55 @@ class MdInput extends React.Component {
         //this.codeSort = this.codeSort.bind(this)
     }
 
+    toggleIcon() {
+        if (this.props.store.showPreview === true) {
+            return <Icon>keyboard_arrow_right</Icon>
+        } else {
+            return <Icon>keyboard_arrow_left</Icon>
+        }
+    }
+
     render() {
 
         return <div className="controlArea">
-            <Button
-                variant="contained"
-                color="primary"
-                size="small"
-                onClick={this.props.event.openFile}
-            ><Icon>folder_open</Icon></Button>
-            <Button
-                variant="contained"
-                color="primary"
-                size="small"
-                onClick={this.props.event.saveFile}
-            ><Icon>save</Icon></Button>
-            <Button
-                variant="contained"
-                color="primary"
-                size="small"
-                onClick={this.props.event.createPdf}
-            ><Icon>picture_as_pdf</Icon></Button>
+            <Tooltip title="Open md file">
+                <Button
+                    variant="contained"
+                    color="primary"
+                    size="small"
+                    onClick={this.props.event.openFile}
+                ><Icon>folder_open</Icon></Button>
+            </Tooltip>
+
+            <Tooltip title="Save md file">
+                <Button
+                    variant="contained"
+                    color="primary"
+                    size="small"
+                    onClick={this.props.event.saveFile}
+                ><Icon>save</Icon></Button>
+            </Tooltip>
+
+            <Tooltip title="Create PDF">
+                <Button
+                    variant="contained"
+                    color="primary"
+                    size="small"
+                    onClick={this.props.event.createPdf}
+                ><Icon>picture_as_pdf</Icon></Button>
+            </Tooltip>
+
+            <Tooltip title="Toggle Preview">
+                <Button
+                    className="floatRight"
+                    variant="contained"
+                    mini
+                    color="primary"
+                    size="small"
+                    onClick={this.props.event.togglePreview}
+                >{this.toggleIcon()}</Button>
+            </Tooltip>
+
         </div>
     }
 

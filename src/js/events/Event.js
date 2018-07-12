@@ -14,6 +14,11 @@ class Event {
         this.store.compile();
     }
 
+    @action.bound
+    togglePreview() {
+        this.store.showPreview = !this.store.showPreview;
+    }
+
     /**
      * PDF作成.
      */

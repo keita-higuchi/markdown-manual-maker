@@ -1,4 +1,5 @@
-html, body, main {
+@import "_importants";
+html, body, main, .contentWrapper {
     height: 100vh;
 }
 body {
@@ -7,14 +8,16 @@ body {
 }
 
 .mainContainer {
-
+    height: calc(~'100% - 80px');
+    display: flex;
     .content {
-        display: inline-block;
-        width: 50%;
-        vertical-align: top;
+        //display: inline-block;
+        //width: 50%;
+        //vertical-align: top;
     }
 
     .inputContent {
+        flex: 1;
     }
 
     .previewContent {
@@ -23,8 +26,8 @@ body {
         box-sizing: border-box;
         background: gray;
         zoom: 60%;
-        //height: 100%;
-        height: 1170px;
+        //height: calc(~'100% - 80px');
+        height: 100%;
         overflow: scroll;
 
         .page {

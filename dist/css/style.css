@@ -1,23 +1,29 @@
+.floatRight {
+  float: right !important;
+}
 html,
 body,
-main {
+main,
+.contentWrapper {
   height: 100vh;
 }
 body {
   margin: 0;
   padding: 0;
 }
-.mainContainer .content {
-  display: inline-block;
-  width: 50%;
-  vertical-align: top;
+.mainContainer {
+  height: calc(100% - 80px);
+  display: flex;
+}
+.mainContainer .inputContent {
+  flex: 1;
 }
 .mainContainer .previewContent {
   padding: 5px;
   box-sizing: border-box;
   background: gray;
   zoom: 60%;
-  height: 1170px;
+  height: 100%;
   overflow: scroll;
 }
 .mainContainer .previewContent .page {

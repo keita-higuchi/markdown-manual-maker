@@ -22,10 +22,12 @@ class App extends React.Component {
     }
 
     render () {
-        return <div className="mainContainer">
+        return <div className="contentWrapper">
             <Control store={this.props.store} />
-            <MdInput store={this.props.store} />
-            <Preview store={this.props.store} />
+            <div className="mainContainer">
+                <MdInput store={this.props.store} />
+                <Preview store={this.props.store} />
+            </div>
         </div>
     }
 }
