@@ -1,0 +1,47 @@
+.previewContent {
+
+    padding: 5px;
+    box-sizing: border-box;
+    background: gray;
+    zoom: 60%;
+    //height: calc(~'100% - 80px');
+    height: 100%;
+    overflow: scroll;
+
+    .page {
+        overflow: hidden;
+        background: white;
+
+        margin: 3px auto;
+
+        // ページ余白
+        padding: 20mm;
+
+        page-break-after: always;
+        &:last-child {
+            page-break-after: auto;
+        }
+
+        // A4縦(default)
+        width: 210mm;
+        height: 297mm;
+
+        // A4横
+        &.A4.Landscape {
+            height: 210mm;
+            width: 297mm;
+        }
+
+        // B5縦
+        &.B5 {
+            width: 182mm;
+            height: 257mm;
+            &.Landscape {
+                height: 182mm;
+                width: 257mm;
+            }
+        }
+
+    }
+
+}

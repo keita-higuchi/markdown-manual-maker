@@ -14,6 +14,36 @@ class Event {
         this.store.compile();
     }
 
+    @action.bound
+    togglePreview() {
+        this.store.showPreview = !this.store.showPreview;
+    }
+
+    @action.bound
+    closePageSetingModal() {
+        this.store.pageSettingModal.open = false;
+    }
+
+    @action.bound
+    openPageSettingModal() {
+        this.store.pageSettingModal.open = true;
+    }
+
+    @action.bound
+    changePdfSetting(e, type) {
+        switch (type) {
+        case 'size':
+            this.store.pdfPageSize = e.target.value;
+            break;
+        case 'orientation':
+            this.store.pdfOrientation = e.target.value;
+            break;
+        }
+
+        this.store.compile();
+    }
+
+
     /**
      * PDF作成.
      */
@@ -21,7 +51,11 @@ class Event {
     createPdf(val) {
 
         // tmp.html作成
-        let result = ipcRenderer.sendSync('printPdf', this.store.html);
+        let result = ipcRenderer.sendSync('printPdf', {
+            html: this.store.html,
+            pageSize: this.store.pdfPageSize,
+            pdfOrientation: this.store.pdfOrientation,
+        });
     }
 
     /**
@@ -47,6 +81,8 @@ class Event {
             fs.writeFileSync(result, this.store.mdText);
         }
     }
+
+
 
 }
 

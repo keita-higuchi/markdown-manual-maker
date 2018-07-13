@@ -68,7 +68,7 @@ ipcMain.on('printPdf', (event, arg) => {
 
     // ファイル書き込み
     let html = fs.readFileSync(path.join(__dirname + '/dist/css/default/template.html'), 'utf8');
-    fs.writeFile('prev.html', html.replace(/\{\{content\}\}/, arg));
+    fs.writeFile('prev.html', html.replace(/\{\{content\}\}/, arg.html));
 
 
     let tmpWindow = new BrowserWindow({parent: mainWindow, show: false});
@@ -88,7 +88,30 @@ ipcMain.on('printPdf', (event, arg) => {
 
             if (val != undefined) {
 
+                let landscape = false;
+                if (arg.pdfOrientation == 'Landscape') {
+                    landscape = true;
+                }
+
+                // A4
+                let pageSize = {
+                    width: 210000,
+                    height: 297000,
+                }
+
+                switch (arg.pageSize) {
+                case 'B5':
+                    pageSize = {
+                        width: 182000,
+                        height: 257000,
+                    }
+                    break;
+                }
+
+
                 tmpWindow.webContents.printToPDF({
+                    pageSize: pageSize,
+                    landscape: landscape,
                     printBackground: true
                 }, (err, data) => {
                     if (err) throw err;

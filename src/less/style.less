@@ -1,4 +1,6 @@
-html, body, main {
+@import "_importants";
+@import "_previewContent";
+html, body, main, .contentWrapper {
     height: 100vh;
 }
 body {
@@ -7,47 +9,18 @@ body {
 }
 
 .mainContainer {
-
+    height: calc(~'100% - 80px');
+    display: flex;
     .content {
-        display: inline-block;
-        width: 50%;
-        vertical-align: top;
+        //display: inline-block;
+        //width: 50%;
+        //vertical-align: top;
     }
 
     .inputContent {
+        flex: 1;
     }
 
-    .previewContent {
-
-        padding: 5px;
-        box-sizing: border-box;
-        background: gray;
-        zoom: 60%;
-        //height: 100%;
-        height: 1170px;
-        overflow: scroll;
-
-        .page {
-            overflow: hidden;
-            background: white;
-            //width: 172mm;
-            //height: 251mm;
-
-            width: 210mm;
-            height: 297mm;
-
-            margin: 3px auto;
-
-            // ページ余白
-            padding: 20mm;
-
-            page-break-after: always;
-            &:last-child {
-                page-break-after: auto;
-            }
-        }
-
-    }
 
 }
 
