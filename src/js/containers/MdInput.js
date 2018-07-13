@@ -51,6 +51,8 @@ class MdInput extends React.Component {
 
     componentDidMount() {
         this.props.event.handleChangeMdText('');
+        let editor = this.refs.aceEditor.editor;
+        editor.focus();
     }
 
     addText(type) {

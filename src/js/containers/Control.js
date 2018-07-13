@@ -50,6 +50,17 @@ class MdInput extends React.Component {
                 ><Icon>picture_as_pdf</Icon></Button>
             </Tooltip>
 
+            <Tooltip title="PDF Setting">
+                <Button
+                    className="floatRight"
+                    variant="contained"
+                    mini
+                    color="primary"
+                    size="small"
+                    onClick={this.props.event.openPageSettingModal}
+                ><Icon>settings</Icon></Button>
+            </Tooltip>
+
             <Tooltip title="Toggle Preview">
                 <Button
                     className="floatRight"

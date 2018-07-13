@@ -11,6 +11,7 @@ import Event from './events/Event'
 import Control from './containers/Control';
 import MdInput from './containers/MdInput';
 import Preview from './containers/Preview';
+import PageSetting from './containers/PageSetting';
 
 
 @inject("event") @observer
@@ -28,6 +29,7 @@ class App extends React.Component {
                 <MdInput store={this.props.store} />
                 <Preview store={this.props.store} />
             </div>
+            <PageSetting store={this.props.store} />
         </div>
     }
 }
