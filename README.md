@@ -4,28 +4,46 @@ A tool to create PDF documents with Markdown.
 
 ## Usage
 
-### 改ページする
+### How to split page
 
-`---`で改ページします。
+Split page by `---`.
 
-※本来の`<hr>`を入力したい場合は、`- - -`や、`***`を使うようにしてください。
 
-### テンプレートを変更する
+### Change page settings
 
-### ページサイズを変更する
+### Change page size
 
-右上歯車ボタンより、ページサイズを変更できます。
+You can change the page size from the right top gear button.
 
-### ページレイアウトを変更する
+### Change Layout
 
-準備中。。。
+To change `text-align`,
+
+`--!right`
+`--!center`
+`--!left`
+
+with end tag `---!`
+
+The flex layout is as follows.
+
+```
+---!flex
+---!flexContent
+content A
+---!
+---!flexContent
+content B
+---!
+---!
+```
 
 
 ## For Developer
 
-### テンプレートの作成
+### Make template
 
-準備中。。。
+in preparation...
 
 
 ## Licenses
