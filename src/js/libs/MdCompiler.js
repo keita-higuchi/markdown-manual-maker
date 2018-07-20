@@ -8,15 +8,15 @@ class MdCompiler {
             pdfPageSize: "A4",
             pdfOrientation: "Portrait",
 
-            newPage: new RegExp(/[\s\r\n]---[\s\r\n]/, 'g'),
-            center: new RegExp(/[\s\r\n]---!center[\s\r\n]/, 'g'),
-            right: new RegExp(/[\s\r\n]---!right[\s\r\n]/, 'g'),
-            left: new RegExp(/[\s\r\n]---!left[\s\r\n]/, 'g'),
+            newPage: new RegExp(/(^|[\s\r\n])---([\s\r\n]|$)/, 'g'),
+            center: new RegExp(/(^|[\s\r\n])---!center([\s\r\n]|$)/, 'g'),
+            right: new RegExp(/(^|[\s\r\n])---!right([\s\r\n]|$)/, 'g'),
+            left: new RegExp(/(^|[\s\r\n])---!left([\s\r\n]|$)/, 'g'),
 
-            flex: new RegExp(/[\s\r\n]---!flex[\s\r\n]/, 'g'),
-            flexContent: new RegExp(/[\s\r\n]---!flexContent[\s\r\n]/, 'g'),
+            flex: new RegExp(/(^|[\s\r\n])---!flex([\s\r\n]|$)/, 'g'),
+            flexContent: new RegExp(/(^|[\s\r\n])---!flexContent([\s\r\n]|$)/, 'g'),
 
-            end: new RegExp(/[\s\r\n]---[!\s\r\n]/, 'g'),
+            end: new RegExp(/(^|[\s\r\n])---([!\s\r\n]|$)/, 'g'),
 
 
         }
