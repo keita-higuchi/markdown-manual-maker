@@ -67,14 +67,18 @@ app.on('activate', function () {
 ipcMain.on('printPdf', (event, arg) => {
 
     // ファイル書き込み
-    let html = fs.readFileSync(path.join(__dirname + '/dist/css/default/template.html'), 'utf8');
-    fs.writeFile('prev.html', html.replace(/\{\{content\}\}/, arg.html));
+    let html = fs.readFileSync(path.join(__dirname, 'template.html'), 'utf8');
 
+    // css ファイルパス
+    html = html.replace(/\{\{basedir\}\}/g, __dirname)
+
+    //fs.writeFile('prev.html', html.replace(/\{\{content\}\}/, arg.html));
+    fs.writeFile(path.join(app.getPath('temp'), 'prev.html'), html.replace(/\{\{content\}\}/, arg.html));
 
     let tmpWindow = new BrowserWindow({parent: mainWindow, show: false});
 
     tmpWindow.loadURL(url.format({
-        pathname: path.join(__dirname, 'prev.html'),
+        pathname: path.join(app.getPath('temp'), 'prev.html'),
         protocol: 'file:',
         slashes: true
     }));
