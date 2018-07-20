@@ -1,11 +1,11 @@
 {
   "name": "markdown-manual-maker",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "package-win": "electron-packager . mmm --overwrite --asar --platform=win32 --arch=ia32 --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"MMM\" --version-string.LegalCopyright=\"(C) Keita Higuchi, All right reserved.\"",
+    "package-win": "electron-packager . mmm --overwrite --asar --platform=win32 --arch=ia32 --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE",
     "package-linux": "electron-packager . mmm --overwrite --asar --platform=linux --arch=ia32 --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"MMM\" --version-string.LegalCopyright=\"(C) Keita Higuchi, All right reserved.\"",
     "start": "electron ."
   },
