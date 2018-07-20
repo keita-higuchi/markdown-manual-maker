@@ -7,3 +7,9 @@
 .page .text-right {
   text-align: right;
 }
+.page .text-center {
+  text-align: center;
+}
+.page .text-left {
+  text-align: left;
+}
