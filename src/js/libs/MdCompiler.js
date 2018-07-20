@@ -13,6 +13,9 @@ class MdCompiler {
             right: new RegExp(/[\s\r\n]---!right[\s\r\n]/, 'g'),
             left: new RegExp(/[\s\r\n]---!left[\s\r\n]/, 'g'),
 
+            flex: new RegExp(/[\s\r\n]---!flex[\s\r\n]/, 'g'),
+            flexContent: new RegExp(/[\s\r\n]---!flexContent[\s\r\n]/, 'g'),
+
             end: new RegExp(/[\s\r\n]---[!\s\r\n]/, 'g'),
 
 
@@ -29,6 +32,11 @@ class MdCompiler {
         let replacedMd = mdText.replace(option.newPage, '</div><div class="' + pageClass + '">' + "\r\r");
 
         //let html = '<div class="' + pageClass + '">' + marked(mdText.replace(option.newPage, '</div><div class="' + pageClass + '">')) + '</div>';
+
+
+        // 2カラム
+        replacedMd = replacedMd.replace(option.flex, '<div class="flexContainer">' + "\r\r");
+        replacedMd = replacedMd.replace(option.flexContent, '<div class="flexContent">' + "\r\r");
 
 
         // right,center,left

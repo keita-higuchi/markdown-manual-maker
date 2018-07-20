@@ -13,3 +13,12 @@
 .page .text-left {
   text-align: left;
 }
+.page .flexContainer {
+  display: flex;
+  align-items: stretch;
+}
+.page .flexContainer .flexContent {
+  display: inline-block;
+  padding: 8px;
+  flex-grow: 1;
+}
