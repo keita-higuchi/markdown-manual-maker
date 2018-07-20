@@ -2,7 +2,7 @@ import React from 'react'
 
 import {observer, inject} from "mobx-react";
 
-import {TextField, Button, Icon, Tooltip} from '@material-ui/core';
+import {TextField, Icon, Tooltip, IconButton} from '@material-ui/core';
 import AceEditor from 'react-ace';
 
 import fs from 'fs';
@@ -60,6 +60,7 @@ class MdInput extends React.Component {
 
         let editor = this.refs.aceEditor.editor;
         let selection = this.refs.aceEditor.editor.selection;
+        let tmp = '';
 
         switch (type) {
         case 'bold':
@@ -88,6 +89,40 @@ class MdInput extends React.Component {
 
             editor.insert(tableText);
             break;
+
+        case 'newpage':
+            tmp = '\r---\r';
+            editor.insert(tmp);
+            break;
+
+        case 'center':
+            tmp = '\r---!center\r\r---!\r';
+            editor.insert(tmp);
+            selection.moveCursorUp();
+            selection.moveCursorUp();
+            break;
+        case 'right':
+            tmp = '\r---!right\r\r---!\r';
+            editor.insert(tmp);
+            selection.moveCursorUp();
+            selection.moveCursorUp();
+            break;
+        case 'left':
+            tmp = '\r---!left\r\r---!\r';
+            editor.insert(tmp);
+            selection.moveCursorUp();
+            selection.moveCursorUp();
+            break;
+        case 'flex':
+            tmp = '\r---!flex\r---!flexContent\r\r---!\r---!flexContent\r\r---!\r---!\r';
+            editor.insert(tmp);
+            selection.moveCursorUp();
+            selection.moveCursorUp();
+            selection.moveCursorUp();
+            selection.moveCursorUp();
+            selection.moveCursorUp();
+            selection.moveCursorUp();
+            break;
         }
 
         editor.focus();
@@ -100,40 +135,58 @@ class MdInput extends React.Component {
         return <div className="content inputContent">
             <div className="editButtons">
                 <Tooltip title="bold">
-                    <Button
-                        variant="contained"
-                        size="small"
+                    <IconButton
                         onClick={(e) => {this.addText('bold')}}
-                    ><Icon>format_bold</Icon></Button>
+                    ><Icon>format_bold</Icon></IconButton>
                 </Tooltip>
                 <Tooltip title="itaric">
-                    <Button
-                        variant="contained"
-                        size="small"
+                    <IconButton
                         onClick={(e) => {this.addText('itaric')}}
-                    ><Icon>format_italic</Icon></Button>
+                    ><Icon>format_italic</Icon></IconButton>
                 </Tooltip>
                 <Tooltip title="link">
-                    <Button
-                        variant="contained"
-                        size="small"
+                    <IconButton
                         onClick={(e) => {this.addText('link')}}
-                    ><Icon>insert_link</Icon></Button>
+                    ><Icon>insert_link</Icon></IconButton>
                 </Tooltip>
                 <Tooltip title="image">
-                    <Button
-                        variant="contained"
-                        size="small"
+                    <IconButton
                         onClick={(e) => {this.addText('image')}}
-                    ><Icon>image</Icon></Button>
+                    ><Icon>image</Icon></IconButton>
                 </Tooltip>
                 <Tooltip title="table">
-                    <Button
-                        variant="contained"
-                        size="small"
+                    <IconButton
                         onClick={(e) => {this.addText('table')}}
-                    ><Icon>grid_on</Icon></Button>
+                    ><Icon>grid_on</Icon></IconButton>
                 </Tooltip>
+
+                <Tooltip title="new page">
+                    <IconButton
+                        onClick={(e) => {this.addText('newpage')}}
+                    ><Icon>keyboard_return</Icon></IconButton>
+                </Tooltip>
+
+                <Tooltip title="left">
+                    <IconButton
+                        onClick={(e) => {this.addText('left')}}
+                    ><Icon>format_align_left</Icon></IconButton>
+                </Tooltip>
+                <Tooltip title="center">
+                    <IconButton
+                        onClick={(e) => {this.addText('center')}}
+                    ><Icon>format_align_center</Icon></IconButton>
+                </Tooltip>
+                <Tooltip title="right">
+                    <IconButton
+                        onClick={(e) => {this.addText('right')}}
+                    ><Icon>format_align_right</Icon></IconButton>
+                </Tooltip>
+                <Tooltip title="flex">
+                    <IconButton
+                        onClick={(e) => {this.addText('flex')}}
+                    ><Icon>view_column</Icon></IconButton>
+                </Tooltip>
+
             </div>
             <AceEditor
                 mode="markdown"

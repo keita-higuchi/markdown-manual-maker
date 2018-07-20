@@ -42,4 +42,6 @@ doc/
 /*.jpg
 
 release-builds/
+dist/
+prev.html
 

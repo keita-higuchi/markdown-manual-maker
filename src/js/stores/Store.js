@@ -1,7 +1,17 @@
 import {useStrict, observable, computed, action, reaction, autorun } from "mobx";
-import marked from 'marked'
+import MdCompiler from '../libs/MdCompiler';
 
 class Store {
+
+    constructor() {
+        this.mdCompiler = new MdCompiler();
+
+        //let test = 'xxxx --- xxx';
+        //let newPage = new RegExp(/\s---\s/, 'g');
+        //console.log(test.replace(newPage, 'kaigyou'));
+
+    }
+
 
     @observable mdText = ""
     @observable html = ""
@@ -18,10 +28,11 @@ class Store {
     @action.bound
     compile() {
 
-        let pageClass = "page" + " " + this.pdfPageSize + " " + this.pdfOrientation
+        //let pageClass = "page" + " " + this.pdfPageSize + " " + this.pdfOrientation
 
-        //  --- を置き換えてからmd
-        this.html = '<div class="' + pageClass + '">' + marked(this.mdText.replace(/---/g, '</div><div class="' + pageClass + '">')) + '</div>';
+        ////  --- を置き換えてからmd
+        //this.html = '<div class="' + pageClass + '">' + marked(this.mdText.replace(/---/g, '</div><div class="' + pageClass + '">')) + '</div>';
+        this.html = this.mdCompiler.compile(this.mdText);
     }
 }
 
