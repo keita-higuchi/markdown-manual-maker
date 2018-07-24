@@ -11,6 +11,7 @@ class Event {
     @action.bound
     handleChangeMdText(e) {
         this.store.mdText = e;
+        this.store.isEdit = true;
         this.store.compile();
     }
 
@@ -79,9 +80,21 @@ class Event {
         let result = ipcRenderer.sendSync('saveFile');
         if (result !== '') {
             fs.writeFileSync(result, this.store.mdText);
+            this.store.mdTextFilePath = result;
+            this.store.isEdit = false;
         }
     }
 
+    @action.bound
+    autoSaveFile() {
+        fs.writeFileSync(this.store.mdTextFilePath, this.store.mdText);
+        this.store.isEdit = false;
+    }
+
+    @action.bound
+    setMdTextFilePath(path) {
+        this.store.mdTextFilePath = path
+    }
 
 
 }

@@ -43,7 +43,7 @@ content B
 
 ### Make template
 
-in preparation...
+in preparation....
 
 
 ## Licenses
