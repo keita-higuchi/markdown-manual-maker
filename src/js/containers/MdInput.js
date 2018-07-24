@@ -52,7 +52,25 @@ class MdInput extends React.Component {
     componentDidMount() {
         this.props.event.handleChangeMdText('');
         let editor = this.refs.aceEditor.editor;
+
+        editor.commands.addCommand({
+            Name: 'savefile',
+            bindKey: { win: 'Ctrl-S', mac: 'Command-S'},
+            exec: (editor) => {
+                this.onSaveFile()
+            }
+        })
+
         editor.focus();
+
+    }
+
+    onSaveFile() {
+        if (this.props.store.mdTextFilePath == '') {
+            this.props.event.saveFile();
+        } else {
+            this.props.event.autoSaveFile();
+        }
     }
 
     addText(type) {

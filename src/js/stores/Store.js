@@ -12,6 +12,7 @@ class Store {
 
     }
 
+    @observable mdTextFilePath = ""
 
     @observable mdText = ""
     @observable html = ""

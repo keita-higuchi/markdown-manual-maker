@@ -79,7 +79,13 @@ class Event {
         let result = ipcRenderer.sendSync('saveFile');
         if (result !== '') {
             fs.writeFileSync(result, this.store.mdText);
+            this.store.mdTextFilePath = result;
         }
+    }
+
+    @action.bound
+    autoSaveFile() {
+        fs.writeFileSync(this.store.mdTextFilePath, this.store.mdText);
     }
 
 
