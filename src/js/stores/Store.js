@@ -34,6 +34,10 @@ class Store {
 
         ////  --- を置き換えてからmd
         //this.html = '<div class="' + pageClass + '">' + marked(this.mdText.replace(/---/g, '</div><div class="' + pageClass + '">')) + '</div>';
+        this.mdCompiler.setPageSetting({
+            pdfPageSize: this.pdfPageSize,
+            pdfOrientation: this.pdfOrientation,
+        });
         this.html = this.mdCompiler.compile(this.mdText);
     }
 }

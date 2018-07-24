@@ -23,6 +23,11 @@ class MdCompiler {
 
     }
 
+    setPageSetting(obj) {
+        this.option.pdfPageSize = obj.pdfPageSize
+        this.option.pdfOrientation = obj.pdfOrientation
+    }
+
     compile(mdText) {
 
         let option = this.option;
