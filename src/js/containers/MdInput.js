@@ -37,7 +37,16 @@ class MdInput extends React.Component {
                 // ファイル読み込み
                 // TODO 確認してから
                 let str = fs.readFileSync(file.path, 'utf8');
-                this.props.store.mdText = str;
+                if (this.props.store.isEdit === true) {
+                    if (window.confirm('Text is not saved. Is it OK ?')) {
+                        //this.props.store.mdText = str;
+                        this.props.event.handleChangeMdText(str);
+                        this.props.event.setMdTextFilePath(file.path);
+                    }
+                } else {
+                    this.props.event.handleChangeMdText(str);
+                    this.props.event.setMdTextFilePath(file.path);
+                }
 
 
 
